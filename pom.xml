@@ -1,0 +1,149 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>workspace</groupId>
+  <artifactId>workspace</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <properties>
+	<selenium.version>4.0.0-alpha-2</selenium.version>
+	<maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+  
+  <build>
+    <!--  mvn exec:java -Dexec.mainClass="workspace.MainScript"-->
+ 	<sourceDirectory>src</sourceDirectory>
+ 	<resources>
+		<resource>
+		   <directory>src</directory>
+		   <excludes>
+		     <exclude>**/*.java</exclude>
+		   </excludes>
+		</resource>
+		
+		<resource>
+		  <directory>resources</directory>
+		  <excludes>
+		    <exclude>**/*.java</exclude>
+		  </excludes>
+		</resource>
+  	</resources>
+  		
+ 	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<configuration>
+				<source>1.8</source>
+				<target>1.8</target>
+    		</configuration>
+   		</plugin>
+   		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>2.18.1</version>
+   		</plugin>
+   		<plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-war-plugin</artifactId>
+	        <version>3.2.3</version>
+			<configuration>
+				<compilerArgument>-Xlint:none</compilerArgument>			    
+			</configuration>
+		</plugin>
+		
+		<plugin>
+		  <groupId>org.codehaus.mojo</groupId>
+		  <artifactId>exec-maven-plugin</artifactId>
+		  <version>1.6.0</version>
+		  <configuration>
+	          <executableDependency>
+	            <!-- REFERENCES plugin dependency, see declaration below -->
+	            <groupId>workspace</groupId>
+	            <artifactId>workspace</artifactId>
+	          </executableDependency>
+	          <mainClass>workspace.MainScript</mainClass>
+	      </configuration>
+		  <executions>
+		    <execution>
+		      <goals>
+		        <goal>java</goal>
+		      </goals>
+		    </execution>
+		  </executions>
+		</plugin>
+	</plugins>
+  </build>
+  
+  <repositories>
+   <repository>
+		<id>central</id>
+		<name>Maven Central Repository</name>
+		<url>https://repo1.maven.org/maven2/</url>
+		<releases><enabled>true</enabled></releases>
+		<snapshots><enabled>true</enabled></snapshots>
+    </repository>
+  </repositories>
+
+  <dependencies>
+  
+  	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-collections4</artifactId>
+	    <version>4.0</version>
+	</dependency>
+
+	
+	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-lang3</artifactId>
+		<version>3.7</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>com.itextpdf</groupId>
+	    <artifactId>itextpdf</artifactId>
+	    <version>5.5.13</version>
+	</dependency>
+
+	<dependency>
+	    <groupId>com.itextpdf</groupId>
+	    <artifactId>kernel</artifactId>
+	    <version>7.1.13</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.itextpdf</groupId>
+	    <artifactId>layout</artifactId>
+	    <version>7.1.13</version>
+	</dependency>
+	<dependency>
+		<groupId>org.seleniumhq.selenium</groupId>
+		<artifactId>selenium-java</artifactId>
+		<version>4.0.0-alpha-2</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+	<dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>2.6</version>
+	</dependency>		
+	
+	
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-api</artifactId>
+	    <version>1.7.21</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-simple</artifactId>
+	    <version>1.7.21</version>
+	</dependency>
+	
+			
+   </dependencies>		
+</project>
